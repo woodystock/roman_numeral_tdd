@@ -23,9 +23,10 @@ const numberToRomanNumeral = num => {
     let romanStr = "";
 
     while (num > 0) {
-        if(num >= romanNumeralsOrder[base].value) {
-            romanStr += romanNumeralsOrder[base].numeral;
-            num -= romanNumeralsOrder[base].value;
+        const currentNumeral = romanNumeralsOrder[base];
+        if(num >= currentNumeral.value) {
+            romanStr += currentNumeral.numeral;
+            num -= currentNumeral.value;
         }
         else
             base -= 1;
@@ -43,10 +44,10 @@ const romanNumeralToNumber = romanNumeralStr => {
 
 
     while(base >= 0) {
-        const currentNumeral = romanNumeralsOrder[base].numeral;
-        if(romanNumeralStr.startsWith(currentNumeral)) {
-            sum += romanNumeralsOrder[base].value;
-            romanNumeralStr = romanNumeralStr.slice(currentNumeral.length)
+        const currentNumeral = romanNumeralsOrder[base];
+        if(romanNumeralStr.startsWith(currentNumeral.numeral)) {
+            sum += currentNumeral.value;
+            romanNumeralStr = romanNumeralStr.slice(currentNumeral.numeral.length)
         }
         else
             base -= 1;
