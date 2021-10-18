@@ -3,7 +3,7 @@
 const numberToRomanNumeral = num => {
     if(!Number.isInteger(num))  throw new Error("num (as integer) is required")
 
-    const romanNumeralsOrder = [[1000,"M"],[500,"D"],[100,"C"],[50,"L"],[10,"X"],[5,"V"],[1,"I"]];
+    const romanNumeralsOrder = [[1000,"M"],[500,"D"],[100,"C"],[50,"L"],[10,"X"],[5,"V"],[4,"IV"],[1,"I"]];
     
     let romanStr = "";
     let index = 0;
