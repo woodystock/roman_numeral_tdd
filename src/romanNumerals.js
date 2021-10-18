@@ -43,15 +43,24 @@ const numberToRomanNumeral = num => {
 const romanNumeralToNumber = romanNumeralStr => {
     if(! romanNumeralStr ) throw new Error("romanNumeralStr (as string) is required")
 
-    const splitNumerals = [...romanNumeralStr.toUpperCase()];
+    romanNumeralsOrder = Object.entries(romanNumerals);
+
+    let base = romanNumeralsOrder.length - 1;
     let sum = 0;
 
-    while(splitNumerals.length) {
-        sum += romanNumerals[splitNumerals.shift()];
+
+    while(base >= 0) {
+        const currentNumeral = romanNumeralsOrder[base][0];
+        if(romanNumeralStr.startsWith(currentNumeral)) {
+            sum += romanNumerals[currentNumeral];
+            romanNumeralStr = romanNumeralStr.slice(currentNumeral.length)
+        }
+        else
+            base -= 1;
+
     }
-
-
-   return sum;
+    
+    return sum;
 }
 
 module.exports = {
