@@ -22,7 +22,7 @@ test.each([
     [99,"XCIX"],
     [449,"CDXLIX"],
     [1896,"MDCCCXCVI"]
-  ])('%i => %s', (num, numeral) => {
+])('%i => %s', (num, numeral) => {
     const result = numberToRomanNumeral(num);
     expect(result).toBe(numeral);
 });
@@ -41,9 +41,16 @@ test.only.each([
     ["CCII",202],
     ["DXXXI",531],
     ["MX",1010],
-    ["MMDCCCLXII",2862]
+    ["MMDCCCLXII",2862],
+    ["IV",4],
+    ["IX",9],
+    ["XL",40],
+    ["XLIX",49],
+    ["XCIX",99],
+    ["CDXLIX",449],
+    ["MDCCCXCVI",1896]
 
-  ])('%s => %i', (numeral, num) => {
+])('%s => %i', (numeral, num) => {
     const result = romanNumeralToNumber(numeral);
     expect(result).toBe(num);
-  });
+});

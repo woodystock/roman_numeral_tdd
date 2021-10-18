@@ -57,8 +57,9 @@ const romanNumeralToNumber = romanNumeralStr => {
         }
         else
             base -= 1;
-
     }
+
+    if(romanNumeralStr.length > 0 ) throw new Error("invalid roman numeral");
     
     return sum;
 }
