@@ -1,9 +1,9 @@
 
 // a function to convert a number into a roman numeral
 const numberToRomanNumeral = num => {
-    if(isNaN(num))  throw new Error("num (as number) is required")
+    if(!Number.isInteger(num))  throw new Error("num (as integer) is required")
 
-    const romanNumeralsOrder = [[10,"X"],[5,"V"],[1,"I"]];
+    const romanNumeralsOrder = [[50,"L"],[10,"X"],[5,"V"],[1,"I"]];
     
     let romanStr = "";
     let index = 0;
