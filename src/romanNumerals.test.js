@@ -26,3 +26,12 @@ test.each([
     const result = numberToRomanNumeral(num);
     expect(result).toBe(numeral);
 });
+
+test.each([
+    ["I",1],
+    ["II",2],
+    ["V",5]
+  ])('%s => %i', (numeral, num) => {
+    const result = romanNumeralToNumber(numeral);
+    expect(result).toBe(num);
+  });

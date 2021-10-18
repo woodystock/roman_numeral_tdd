@@ -1,52 +1,38 @@
 
+    const romanNumerals = {
+        "I":    1,
+        "IV":   4,
+        "V":    5,
+        "IX":   9,
+        "X":    10,
+        "XL":   40,
+        "L":    50,
+        "XC":   90,
+        "C":    100,
+        "CD":   400,
+        "D":    500,
+        "CM":   900,
+        "M":    1000
+    };
+
 // a function to convert a number into a roman numeral
 const numberToRomanNumeral = num => {
     if(!Number.isInteger(num))  throw new Error("num (as integer) is required")
 
-    /*
-        I             1
-        IV            4
-        V             5
-        IX            9
-        X             10
-        XL            40
-        L             50
-        XC            90
-        C             100
-        CD            400
-        D             500
-        CM            900 
-        M             1000  
-*/
-
-    const romanNumeralsOrder = [
-        [1000,"M"],
-        [900,"CM"],
-        [500,"D"],
-        [400,"CD"],
-        [100,"C"],
-        [90,"XC"],
-        [50,"L"],
-        [40,"XL"],
-        [10,"X"],
-        [9,"IX"],
-        [5,"V"],
-        [4,"IV"],
-        [1,"I"]
-    ];
+    romanNumeralsOrder = Object.entries(romanNumerals);
     
     let romanStr = "";
-    let index = 0;
+    let base = romanNumeralsOrder.length - 1;
 
-    while (index < romanNumeralsOrder.length)
+    while (num > 0)
     {
-        if(num >= romanNumeralsOrder[index][0])
+        if(num >= romanNumeralsOrder[base][1])
         {
-            romanStr += romanNumeralsOrder[index][1];
-            num -= romanNumeralsOrder[index][0];
+            romanStr += romanNumeralsOrder[base][0];
+            num -= romanNumeralsOrder[base][1];
         }
         else{
-            index++;
+            base -= 1;
         }
     }
 
@@ -57,7 +43,15 @@ const numberToRomanNumeral = num => {
 const romanNumeralToNumber = romanNumeralStr => {
     if(! romanNumeralStr ) throw new Error("romanNumeralStr (as string) is required")
 
+    const splitNumerals = [...romanNumeralStr.toUpperCase()];
+    let sum = 0;
 
+    while(splitNumerals.length) {
+        sum += romanNumerals[splitNumerals.shift()];
+    }
+
+
+   return sum;
 }
 
 module.exports = {
