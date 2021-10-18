@@ -1,21 +1,19 @@
 
-const romanNumerals = {
-    "I":    1,
-    "IV":   4,
-    "V":    5,
-    "IX":   9,
-    "X":    10,
-    "XL":   40,
-    "L":    50,
-    "XC":   90,
-    "C":    100,
-    "CD":   400,
-    "D":    500,
-    "CM":   900,
-    "M":    1000
-};
-
-const romanNumeralsOrder = Object.entries(romanNumerals);
+const romanNumeralsOrder = [
+    {numeral:"I", value: 1},
+    {numeral:"IV", value: 4},
+    {numeral:"V", value: 5},
+    {numeral:"IX", value: 9},
+    {numeral:"X", value: 10},
+    {numeral:"XL", value: 40},
+    {numeral:"L", value: 50},
+    {numeral:"XC", value: 90},
+    {numeral:"C", value: 100},
+    {numeral:"CD", value: 400},
+    {numeral:"D", value: 500},
+    {numeral:"CM", value: 900},
+    {numeral:"M", value: 1000}
+];
 
 // a function to convert a number into a roman numeral
 const numberToRomanNumeral = num => {
@@ -25,9 +23,9 @@ const numberToRomanNumeral = num => {
     let romanStr = "";
 
     while (num > 0) {
-        if(num >= romanNumeralsOrder[base][1]) {
-            romanStr += romanNumeralsOrder[base][0];
-            num -= romanNumeralsOrder[base][1];
+        if(num >= romanNumeralsOrder[base].value) {
+            romanStr += romanNumeralsOrder[base].numeral;
+            num -= romanNumeralsOrder[base].value;
         }
         else
             base -= 1;
@@ -45,9 +43,9 @@ const romanNumeralToNumber = romanNumeralStr => {
 
 
     while(base >= 0) {
-        const currentNumeral = romanNumeralsOrder[base][0];
+        const currentNumeral = romanNumeralsOrder[base].numeral;
         if(romanNumeralStr.startsWith(currentNumeral)) {
-            sum += romanNumerals[currentNumeral];
+            sum += romanNumeralsOrder[base].value;
             romanNumeralStr = romanNumeralStr.slice(currentNumeral.length)
         }
         else

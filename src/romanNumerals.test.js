@@ -27,7 +27,7 @@ test.each([
     expect(result).toBe(numeral);
 });
 
-test.only.each([
+test.each([
     ["I",1],
     ["II",2],
     ["V",5],
