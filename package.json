@@ -1,0 +1,15 @@
+{
+  "name": "roman_numeral_tdd",
+  "version": "1.0.0",
+  "description": "A exercise to use Test Driven Development to work on functions to parse roman numerals",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.3.0"
+  }
+}
