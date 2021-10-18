@@ -10,7 +10,11 @@ test.each([
     [20,"XX"],
     [28,"XXVIII"],
     [50,"L"],
-    [88,"LXXXVIII"]
+    [88,"LXXXVIII"],
+    [202,"CCII"],
+    [531,"DXXXI"],
+    [1010,"MX"],
+    [2862,"MMDCCCLXII"]
   ])('%i => %s', (num, numeral) => {
     const result = numberToRomanNumeral(num);
     expect(result).toBe(numeral);
